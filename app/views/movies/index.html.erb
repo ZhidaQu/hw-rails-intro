@@ -8,7 +8,20 @@
       <%= check_box_tag "ratings[#{rating}]", "1", @ratings_to_show.include?(rating), class: 'form-check-input' %>
       <%= label_tag "ratings[#{rating}]", rating, class: 'form-check-label' %>
     </div>
+
+    
   <% end %>
+  <div>
+  <label class="form-label me-2" for="sort_by">Sort by:</label>
+  <%= select_tag :sort_by,
+      options_for_select(
+        [["Title", "title"],
+         ["Release Date", "release_date"]],
+        @sort_by
+      ),
+      id: "sort_by",
+      class: "form-select d-inline w-auto" %>
+  </div>
 
   <%= submit_tag 'Refresh', id: 'ratings_submit', class: 'btn btn-primary' %>
 <% end %>
@@ -27,4 +40,3 @@
 </div>
 
 <%= link_to "New movie", new_movie_path %>
-bundler install
